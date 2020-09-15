@@ -1,0 +1,91 @@
+<div>
+	<div class="bg-dark flexbox flex-row flex-j-between flex-a-center p-3">
+		<h1 ui-sref="home" class="text-light brand-name">Restaurant Builder | {{action}}</h1>
+	</div>
+
+	<md-whiteframe
+		class="md-whiteframe-22dp px-5 pt-5 pb-3"
+		layout
+		layout-align="center center"
+		style="max-width: 90%; margin: 20px auto"
+	>
+		<form name="restaurantForm" class="w-100">
+			<div layout="row">
+				<md-input-container flex="50">
+					<label>Restaurant Name</label>
+					<input md-maxlength="50" required name="name" ng-model="restaurant.name" />
+					<div ng-messages="restaurantForm.name.$error">
+						<div ng-message="required">This is required.</div>
+						<div ng-message="md-maxlength">The name must contain not more than 50 characters</div>
+					</div>
+				</md-input-container>
+				<md-input-container flex="50">
+					<label>Owner Name</label>
+					<input required name="ownerName" ng-model="restaurant.ownerName" />
+					<div ng-messages="restaurantForm.ownerName.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+				</md-input-container>
+			</div>
+
+			<md-input-container class="md-block">
+				<label>Address</label>
+				<input md-maxlength="70" required name="address" ng-model="restaurant.location.address" />
+				<div ng-messages="restaurantForm.address.$error">
+					<div ng-message="required">This is required.</div>
+					<div ng-message="md-maxlength">The name must contain not more than 70 characters</div>
+				</div>
+			</md-input-container>
+
+			<div layout="row">
+				<md-input-container flex="30">
+					<label>City</label>
+					<input required name="city" ng-model="restaurant.location.city" />
+					<div ng-messages="restaurantForm.city.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+				</md-input-container>
+				<md-input-container flex="40">
+					<label>State</label>
+					<input required name="state" ng-model="restaurant.location.state" />
+					<div ng-messages="restaurantForm.state.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+				</md-input-container>
+				<md-input-container flex="30">
+					<label>Pincode</label>
+					<input
+						md-maxlength="6"
+						md-minlength="6"
+						required
+						name="pincode"
+						ng-model="restaurant.location.pincode"
+					/>
+					<div ng-messages="restaurantForm.pincode.$error">
+						<div ng-message="required">This is required.</div>
+						<div ng-message="md-maxlength">Must contain 6 numbers</div>
+						<div ng-message="md-minlength">Must contain 6 numbers</div>
+					</div>
+				</md-input-container>
+			</div>
+
+			<md-input-container class="md-block">
+				<md-checkbox name="tos" ng-model="project.tos" required> I accept the terms of service. </md-checkbox>
+				<div ng-messages="restaurantForm.tos.$error" multiple md-auto-hide="false">
+					<div ng-message="required">You must accept the terms of service before you can proceed.</div>
+				</div>
+			</md-input-container>
+
+			<div>
+				<button
+					class="md-raised md-primary md-button md-ink-ripple"
+					type="button"
+					ng-disabled="restaurantForm.$invalid"
+					ng-click="saveRestaurant(restaurant)"
+				>
+					Save
+				</button>
+			</div>
+		</form>
+	</md-whiteframe>
+</div>

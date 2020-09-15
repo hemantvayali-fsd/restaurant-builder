@@ -1,0 +1,200 @@
+<div ng-init="loadRestaurant">
+	<div ng-show="restaurant">
+		<div class="bg-dark flexbox flex-row flex-j-between flex-a-center p-5">
+			<h1 ui-sref="home" class="brand-name text-light">{{restaurant.name | uppercase}}</h1>
+			<md-button class="md-raised md-primary" href="/"
+				><i class="fas fa-chevron-left mr-2"></i>Back to List</md-button
+			>
+		</div>
+
+		<md-content class="p-5">
+			<div class="d-flex flex-j-between">
+				<h2>Menu</h2>
+				<div>
+					<button class="btn btn-info mr-3" ng-click="addToMenu()">Add New</button>
+					<!-- <button
+						type="button"
+						class="btn btn-primary"
+						data-toggle="modal"
+						data-target=".bd-example-modal-lg"
+					>
+						Large modal
+					</button> -->
+				</div>
+			</div>
+			<div id="accordion">
+				<div class="card" ng-repeat="menuItem in restaurant.menu">
+					<div class="card-header" id="{{'heading_' + $index}}">
+						<h5
+							class="btn btn-link mb-0"
+							data-toggle="collapse"
+							data-target="{{'#collapse_' + $index}}"
+							aria-expanded="true"
+							aria-controls="{{'collapse_' + $index}}"
+							style="text-decoration: none"
+						>
+							{{menuItem.cuisine | uppercase}}
+						</h5>
+					</div>
+
+					<div
+						id="{{'collapse_' + $index}}"
+						ng-class="['collapse', {'show': $index === 0}]"
+						aria-labelledby="{{'heading_' + $index}}"
+						data-parent="#accordion"
+					>
+						<div class="card-body">
+							<ul class="list-group">
+								<li
+									class="list-group-item d-flex justify-content-between align-items-center"
+									ng-repeat="dish in menuItem.dishes"
+								>
+									<div style="max-width: 80%">
+										<p class="mb-1" style="font-weight: 500; font-size: 18px">{{dish.name}}</p>
+										<small style="color: #636363">{{dish.description}}</small>
+									</div>
+									<span class="badge badge-primary badge-pill px-4 py-2" style="font-size: 14px">
+										{{dish.price | currency:'₹ '}}
+									</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</md-content>
+	</div>
+</div>
+
+<!-- Cuisine Modal -->
+<div
+	id="cuisineModal"
+	class="modal fade bd-example-modal-lg"
+	tabindex="-1"
+	role="dialog"
+	aria-labelledby="myLargeModalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Add Cuisine</h5>
+			</div>
+			<div class="modal-body">
+				<form name="newCuisineForm">
+					<div layout="row">
+						<md-input-container class="flex-60">
+							<label>Name</label>
+							<input type="text" ng-model="cuisine.name" />
+						</md-input-container>
+						<md-input-container class="flex-40">
+							<label>Priority</label>
+							<input type="number" ng-model="cuisine.priority" />
+						</md-input-container>
+					</div>
+					<md-input-container>
+						<button class="md-raised md-primary md-button md-ink-ripple" type="button">
+							Add
+							<div class="md-ripple-container"></div>
+						</button>
+						<button
+							class="md-raised md-default md-button md-ink-ripple"
+							type="button"
+							data-dismiss="modal"
+							aria-label="Close"
+						>
+							Cancel
+						</button>
+					</md-input-container>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Sidebar -->
+<md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="sidebar">
+	<md-toolbar class="md-theme-light">
+		<h1 class="md-toolbar-tools">Add New Cuisine</h1>
+	</md-toolbar>
+	<md-content layout-padding>
+		<form name="newCuisineForm">
+			<div layout="row">
+				<md-input-container class="flex-50">
+					<label>Name</label>
+					<input type="text" required name="name" ng-model="cuisine.name" />
+					<div ng-messages="newCuisineForm.name.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+				</md-input-container>
+				<md-input-container class="flex-40 ml-4">
+					<label>Priority</label>
+					<input type="number" required name="priority" ng-model="cuisine.priority" />
+					<div ng-messages="newCuisineForm.priority.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+				</md-input-container>
+			</div>
+			<div>
+				<button
+					class="md-raised md-primary md-button md-ink-ripple"
+					type="button"
+					ng-disabled="newCuisineForm.$invalid"
+					ng-click="addNewCuisine(cuisine)"
+				>
+					Add
+					<div class="md-ripple-container"></div>
+				</button>
+			</div>
+		</form>
+	</md-content>
+
+	<!-- New Dish -->
+	<md-toolbar class="md-theme-light">
+		<h1 class="md-toolbar-tools">Add New Dish</h1>
+	</md-toolbar>
+	<md-content layout-padding>
+		<form name="newDishForm">
+			<md-input-container class="md-block">
+				<label>Name</label>
+				<input type="text" ng-model="dish.name" />
+			</md-input-container>
+			<div layout="row">
+				<md-input-container class="flex-50">
+					<label>Size</label>
+					<md-select placeholder="Cuisine" ng-model="dishCuisine" style="min-width: 200px" required>
+						<md-option ng-value="cuisine.name" ng-repeat="cuisine in restaurant.cuisines"
+							>{{cuisine.name}}
+						</md-option>
+					</md-select>
+				</md-input-container>
+				<md-input-container class="flex-40 ml-4">
+					<label>Price</label>
+					<input type="number" ng-model="dish.price" />
+				</md-input-container>
+			</div>
+			<md-input-container class="md-block">
+				<label>Description</label>
+				<textarea type="text" ng-model="dish.description"></textarea>
+			</md-input-container>
+			<div>
+				<button
+					class="md-raised md-primary md-button md-ink-ripple"
+					type="button"
+					ng-click="addNewDish(dish, dishCuisine)"
+				>
+					Add
+					<div class="md-ripple-container"></div>
+				</button>
+				<button
+					class="md-raised md-default md-button md-ink-ripple"
+					type="button"
+					data-dismiss="modal"
+					aria-label="Close"
+				>
+					Cancel
+				</button>
+			</div>
+		</form>
+	</md-content>
+</md-sidenav>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="restaurantApp">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Restaurant Builder</title>
+		<base href="/" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+			crossorigin="anonymous"
+		/>
+		<!--Import Google Icon Font-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<!-- FontAwesome CSS -->
+		<link rel="stylesheet" href="/lib/fa-5/css/all.min.css" />
+		<!-- Material CSS -->
+		<link rel="stylesheet" href="/material/angular-material.css" />
+		<!-- Collapsible -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.rawgit.com/fagnersilvamartins/angular-material-collapsible/8426264b/dist/css/collapsible.min.css"
+		/>
+		<link rel="stylesheet" href="/css/style.css" />
+	</head>
+	<body ng-cloak>
+		<div ui-view></div>
+		<!-- JQuery, Popper, Bootstrap -->
+		<script
+			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+			integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+			integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+			crossorigin="anonymous"
+		></script>
+
+		<!-- Font Awesome JS -->
+		<script src="/lib/fa-5/js/all.js"></script>
+
+		<!-- Angular -->
+		<script src="/lib/angular/angular.min.js"></script>
+		<script src="/lib/angular/angular-aria.min.js"></script>
+		<script src="/lib/angular/angular-animate.min.js"></script>
+		<script src="/lib/angular/angular-messages.min.js"></script>
+		<script src="/material/angular-material.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.28/angular-ui-router.min.js"
+			integrity="sha512-2DoNBBUJq5Wr+Uhjgol+uvmHtxOgrtG1QjuDHltKMdtIiVEhujUi0eb/X21P+P0V9zgXKA/lOKCSq7wj5VYc5A=="
+			crossorigin="anonymous"
+		></script>
+		<!-- Collapsible -->
+		<script src="https://cdn.rawgit.com/fagnersilvamartins/angular-material-collapsible/8426264b/dist/js/collapsible.min.js"></script>
+		<script src="https://cdn.rawgit.com/fagnersilvamartins/angular-material-collapsible/8426264b/dist/js/collapsibleDirective.min.js"></script>
+
+		<!-- Custom JS -->
+		<script src="/js/app.js"></script>
+		<script src="/js/app.config.js"></script>
+
+		<!-- Controllers -->
+		<script src="/js/controllers/mainCtrl.js"></script>
+		<script src="/js/controllers/restaurantCtrl.js"></script>
+
+		<!-- Services -->
+		<script src="/js/services/restaurant.js"></script>
+	</body>
+</html>

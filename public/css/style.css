@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.flexbox {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-j-center {
+  justify-content: center;
+}
+
+.flex-j-between {
+  justify-content: space-between;
+}
+
+.flex-a-center {
+  align-items: center;
+}
+
+.brand-name {
+  cursor: pointer;
+}
+
+md-input-container {
+  margin: 14px 0 !important;
+}
+
+md-sidenav {
+  min-width: 600px;
+  max-width: 800px;
+}
+
+#accordion .card-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#accordion li {
+  border: none;
+}
+
+#accordion li:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, .125) !important;
+}
